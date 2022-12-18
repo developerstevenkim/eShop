@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './app/layout/style.css';
 import App from './app/layout/App';
@@ -16,11 +15,11 @@ export const history = createBrowserHistory();
 
 root.render(
     <Router history={history}>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
           <Provider store={store}>
             <App />
           </Provider>
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </Router>
 );
 
