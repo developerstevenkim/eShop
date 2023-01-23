@@ -13,14 +13,13 @@ namespace API.Controllers
     public class ProductsController : BaseApiController
     {
         private readonly ShopContext _context;
-
         public ProductsController(ShopContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedList<Product>>> GetProducts([FromQuery]ProductParams productParams)
+        public async Task<ActionResult<PagedList<Product>>> GetProducts([FromQuery] ProductParams productParams)
         {
             var query = _context.Products
                 .Sort(productParams.OrderBy)
@@ -29,12 +28,12 @@ namespace API.Controllers
                 .AsQueryable();
 
             var products =
-                await PagedList<Product>.ToPagedList(query, 
-                    productParams.PageNumber, 
+                await PagedList<Product>.ToPagedList(query,
+                    productParams.PageNumber,
                     productParams.PageSize);
 
             Response.AddPaginationHeader(products.MetaData);
-            
+
             return products;
         }
 
