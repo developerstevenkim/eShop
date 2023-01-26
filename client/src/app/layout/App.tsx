@@ -62,9 +62,10 @@ function App() {
       <ToastContainer position='bottom-right' hideProgressBar theme='colored' />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
-      <Container>
+      <Route path='/' component={HomePage} exact/>
+      <Route path={'/(.+)'} render={() => (
+        <Container sx={{mt: 4}}>
         <Switch>
-          <Route path='/' component={HomePage} exact/>
           <Route path='/catalog' component={Catalog} exact/>
           <Route path='/catalog/:id' component={ProductDetails}/>
           <Route path='/about' component={AboutPage}/>
@@ -78,6 +79,7 @@ function App() {
           <Route component={NotFound}/>
         </Switch>
       </Container>
+      )}/>
     </ThemeProvider>
   );
 }
