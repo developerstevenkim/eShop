@@ -61,7 +61,7 @@ namespace API
             });
             services.AddDbContext<ShopContext>(opt =>
             {
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddCors();
             services.AddIdentityCore<User>(opt =>
