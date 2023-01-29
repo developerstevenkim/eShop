@@ -61,7 +61,7 @@ namespace API
             });
             services.AddDbContext<ShopContext>(opt =>
             {
-                opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddCors();
             services.AddIdentityCore<User>(opt =>
